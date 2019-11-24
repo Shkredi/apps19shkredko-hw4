@@ -16,46 +16,6 @@ public class PrefixMatchesITTest {
 
     private PrefixMatches pm;
 
-    @Test
-    public void RwayTrieTest(){
-        RWayTrie t = new RWayTrie();
-        System.out.println(t.toString());
-
-        Tuple w1 = new Tuple("abc", 3);
-        Tuple w2 = new Tuple("ab", 2);
-        Tuple w3 = new Tuple("aba", 3);
-
-        t.add(w1);
-        System.out.println(t.toString());
-        t.add(w2);
-        System.out.println(t.toString());
-        t.add(w3);
-        System.out.println(t.toString());
-
-        System.out.println(t.contains("abc"));
-        System.out.println(t.contains("ab"));
-        System.out.println(t.contains("a"));
-        System.out.println(t.contains("aba"));
-        System.out.println(t.contains("abb"));
-
-        for (String word: t.words()) {
-            System.out.println(word);
-        }
-
-        System.out.println(t.delete("a"));
-        System.out.println(t.toString());
-        System.out.println(t.delete("ab"));
-        System.out.println(t.toString());
-        System.out.println(t.delete("abc"));
-        System.out.println(t.toString());
-        System.out.println(t.delete("aba"));
-        System.out.println(t.toString());
-
-        System.out.println(t.size());
-
-
-    }
-
     @Before
     public void init() {
         pm = new PrefixMatches(new RWayTrie());
