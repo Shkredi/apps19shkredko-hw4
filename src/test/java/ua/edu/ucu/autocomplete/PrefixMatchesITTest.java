@@ -20,7 +20,6 @@ public class PrefixMatchesITTest {
     public void init() {
         pm = new PrefixMatches(new RWayTrie());
         pm.load("abc", "abce", "abcd", "abcde", "abcdef");
-        System.out.println(pm.toString());
     }
 
     @Test
