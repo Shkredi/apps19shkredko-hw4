@@ -64,17 +64,19 @@ public class RWayTrie implements Trie {
     @Override
     public void add(Tuple t) {
         String word = t.term;
-        RWayTrie curTrie = this;
-        for (int i = 0; i < word.length(); i++) {
-            Character c = word.charAt(i);
-            if (!curTrie.dict.containsKey(c)){
-                curTrie.dict.put(c, new RWayTrie(curTrie, c));
+        if (!this.contains(word)) {
+            RWayTrie curTrie = this;
+            for (int i = 0; i < word.length(); i++) {
+                Character c = word.charAt(i);
+                if (!curTrie.dict.containsKey(c)) {
+                    curTrie.dict.put(c, new RWayTrie(curTrie, c));
+                }
+                curTrie = curTrie.dict.get(c);
+                curTrie.size += 1;
             }
-            curTrie = curTrie.dict.get(c);
-            curTrie.size += 1;
+            curTrie.end = true;
+            this.size += 1;
         }
-        curTrie.end = true;
-        this.size += 1;
     }
 
     @Override
